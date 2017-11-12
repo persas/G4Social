@@ -8,7 +8,7 @@ import MySQLdb
 from werkzeug.utils import redirect
 
 app = Flask(__name__, template_folder='templates')
-con = MySQLdb.connect(host = "localhost", user= "root", passwd="" ,db="gamejam")
+con = MySQLdb.connect(host="localhost", user="root", passwd="", db="gamejam")
 
 mysql = MySQL
 # MySQL configurations
@@ -20,10 +20,6 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
 
 @app.route('/')
-def main():
-    return render_template('index.html')
-
-@app.route('/showSignUp')
 def showSignUp():
     return render_template('signup.html')
 
@@ -42,6 +38,7 @@ def signup():
       con.commit()
 
       return redirect(url_for("showSignUp"))
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
