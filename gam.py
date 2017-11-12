@@ -33,14 +33,15 @@ def signup():
       username = str(request.form["user"])
       password = str(request.form["password"])
       email = str(request.form["email"])
+      apellido = str(request.form["apellido"])
+      fechanacimiento = str(request.form["fechanacimiento"])
       cursor = con.cursor()
 
-      cursor.execute("INSERT INTO users (name, password , email) VALUES (%s,%s,%s)",(username,password,email))
+      cursor.execute("INSERT INTO users (name, password , email, apellido, fechanacimiento) VALUES (%s,%s,%s,%s,%s)"
+                     ,(username,password,email,apellido,fechanacimiento))
       con.commit()
 
-      return redirect(url_for("index.html"))
-
-
+      return redirect(url_for("showSignUp"))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8006)
+    app.run(debug=True, port=8000)
