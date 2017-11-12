@@ -21,7 +21,7 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
 @app.route('/')
 def showSignUp():
-    return render_template('signup.html')
+    return render_template('index.html')
 
 
 @app.route('/signup', methods=['POST'])
