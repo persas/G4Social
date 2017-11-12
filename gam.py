@@ -24,20 +24,22 @@ def showSignUp():
     return render_template('index.html')
 
 
-@app.route('/signup', methods=['POST'])
+@app.route('/', methods=['POST'])
 def signup():
-      username = str(request.form["user"])
-      password = str(request.form["password"])
-      email = str(request.form["email"])
-      apellido = str(request.form["apellido"])
-      fechanacimiento = str(request.form["fechanacimiento"])
-      cursor = con.cursor()
 
-      cursor.execute("INSERT INTO users (name, password , email, apellido, fechanacimiento) VALUES (%s,%s,%s,%s,%s)"
-                     ,(username,password,email,apellido,fechanacimiento))
-      con.commit()
+    nombre = str(request.form["nombre"])
+    password = str(request.form["password"])
+    email = str(request.form["email"])
+    apellido = str(request.form["apellido"])
+    fechanacimiento = str(request.form["fechanacimiento"])
 
-      return redirect(url_for("showSignUp"))
+    cursor = con.cursor()
+
+    cursor.execute("INSERT INTO users (name, password , email, apellido, fechanacimiento) VALUES (%s,%s,%s,%s,%s)",(nombre,password,email,apellido,fechanacimiento))
+    con.commit()
+
+    return redirect(url_for("showSignUp"))
+
 
 
 if __name__ == '__main__':

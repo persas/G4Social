@@ -14,7 +14,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand ml-5" href="#"><img src="img/logo-banner-index.png" /></a>
+      <a class="navbar-brand ml-5" href="#"><img src="{{url_for('static' , filename='img/logo-banner-index.png' )}} " /></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,13 +35,13 @@
                     	<h2>Save money and earn achievements</h2>
                     </div>
                     <div class="row mt-5">
-                    	<p><img src="img/goals.png"/> Set your goals</p>
+                    	<p><img src="{{url_for('static' , filename='img/goals.png' )}}"/> Set your goals</p>
                     </div>
                     <div class="row mt-2">
-                    	<p><img src="img/money.png"/> Save your money</p>
+                    	<p><img src="{{url_for('static' , filename='img/money.png' )}}"/> Save your money</p>
                     </div>
                     <div class="row mt-2">
-                    	<p><img src="img/Logros.png"/> Earn achievement</p>
+                    	<p><img src="{{url_for('static' , filename='img/Logros.png' )}}"/> Earn achievement</p>
                     </div>
                 </div>
             </div>
@@ -50,34 +50,28 @@
                 	<div class="row mt-5 justify-content-center mb-5">
                     	<h2>Sign Up, it’s free!</h2>
                     </div>
-                    <form id="registro" method="post" action="/singup">
+                    <form id="registro" method="post" action="/">
                     	<div class="row">
                       		<div class="col-sm-6">
                             	<input class="form-control mr-sm-2" type="text" placeholder="First Name" aria-label="Usuario" id="nombre" name="nombre">
                             </div>
                             <div class="col-sm-6">
-                            	<input class="form-control mr-sm-2" type="text" placeholder="Last Name" aria-label="Usuario" id="apellidos" name="apellidos">
+                            	<input class="form-control mr-sm-2" type="text" placeholder="Last Name" aria-label="Usuario" id="apellidos" name="apellido">
                             </div>
                         </div>
                         <div class="row">
                       		<div class="col-sm-12 mt-3">
-                            	<input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Email" id="correo" name="correo">
+                            	<input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Email" id="correo" name="email">
                             </div>
                         </div>
                         <div class="row">
                       		<div class="col-sm-12 mt-3">
-                            	<input class="form-control mr-sm-2" type="password" placeholder="New Password" aria-label="Pasword" id="pass" name="pass">
+                            	<input class="form-control mr-sm-2" type="password" placeholder="New Password" aria-label="Pasword" id="pass" name="password">
                             </div>
                         </div>
                         <div class="row">
                       		<div class="col-sm-4 mt-3 mb-2">
-                            	<p>Birthday:<input class="form-control mr-sm-2" type="date" placeholder="Month" aria-label="Pasword" id="pass" name="pass"></label></p>
-                            </div>
-                            <div class="col-sm-4 mt-3 mb-2">
-                            	<p><br /><input class="form-control mr-sm-2" type="date" placeholder="Day" aria-label="Day" id="pass" name="pass"></label></p>
-                            </div>
-                            <div class="col-sm-4 mt-3">
-                            	<p><br /><input class="form-control mr-sm-2" type="date" placeholder="Year" aria-label="Year" id="pass" name="pass"></label></p>
+                            	<p>Birthday:<input class="form-control mr-sm-2" type="date" placeholder="Month" aria-label="Pasword" id="birth" name="fechanacimiento"></label></p>
                             </div>
                         </div>
                         <div>
