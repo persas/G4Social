@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web+Bold:600');
+body{
+	margin:0;
+	padding:0;
+	background-color:#dffff2;
+}
+h2{
+	font-family: 'Titillium Web Bold', sans-serif;	
+}
+/* MENU */
+nav{
+	background-color:#00c6d7;
+	min-height:100px;
+}
+@media only screen and (max-width: 576px) {
+	nav input{
+		margin-bottom:10px;
+	}
+}
+/* CONTENIDO */
+#content #colum-left{
+	min-height:85vh;
+}
+#content #colum-left h2{
+	font:'Helvetica';
+	color:#0095a1;
+}
+#content #colum-left img{
+	vertical-align:bottom;
+	padding-right:20px;
+}
+#content #colum-left p{
+	font-size:32px;
+	color:#00c6d7;
+}
+#content #colum-right{
+	min-height:85vh;
+}
+#content #colum-right h2{
+	color:#00c6d7;
+	font-size:36px;
+}
+#content #registro{
+	color:#00c6d7;	
+}

@@ -1,121 +1,113 @@
-<!DOCTYPE html>
-<HTML LANG="ES">
-<HEAD>
-   <TITLE>Pagina de Lindavista con formulario de busqueda de vivienda</TITLE>
-   <META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=utf-8">
-   <link rel="stylesheet" href="{{url_for('static' , filename='css/estilo.css' )}}" >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Documento sin título</title>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</HEAD>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style-index.css">
+</head>
 
-<BODY>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand ml-5" href="#"><img src="img/logo-banner-index.png" /></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Usuario">
+          <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Contraseña">
+          <input class="btn btn-dark" type="submit" value="Sign In">
+        </form>
+      </div>
+    </nav>
+    <div id="content" class="container">
+    	<div class="row">
+        	<div id="colum-left" class="col-sm-6">
+            	<div class="container mt-5">
+                	<div class="row mt-5 justify-content-end">
+                    	<h2>Save money and earn achievements</h2>
+                    </div>
+                    <div class="row mt-5">
+                    	<p><img src="img/goals.png"/> Set your goals</p>
+                    </div>
+                    <div class="row mt-2">
+                    	<p><img src="img/money.png"/> Save your money</p>
+                    </div>
+                    <div class="row mt-2">
+                    	<p><img src="img/Logros.png"/> Earn achievement</p>
+                    </div>
+                </div>
+            </div>
+            <div id="colum-right" class="col-sm-6">
+            	<div class="container mt-5">
+                	<div class="row mt-5 justify-content-center mb-5">
+                    	<h2>Sign Up, it’s free!</h2>
+                    </div>
+                    <form id="registro" method="post" action="/singup">
+                    	<div class="row">
+                      		<div class="col-sm-6">
+                            	<input class="form-control mr-sm-2" type="text" placeholder="First Name" aria-label="Usuario" id="nombre" name="nombre">
+                            </div>
+                            <div class="col-sm-6">
+                            	<input class="form-control mr-sm-2" type="text" placeholder="Last Name" aria-label="Usuario" id="apellidos" name="apellidos">
+                            </div>
+                        </div>
+                        <div class="row">
+                      		<div class="col-sm-12 mt-3">
+                            	<input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Email" id="correo" name="correo">
+                            </div>
+                        </div>
+                        <div class="row">
+                      		<div class="col-sm-12 mt-3">
+                            	<input class="form-control mr-sm-2" type="password" placeholder="New Password" aria-label="Pasword" id="pass" name="pass">
+                            </div>
+                        </div>
+                        <div class="row">
+                      		<div class="col-sm-4 mt-3 mb-2">
+                            	<p>Birthday:<input class="form-control mr-sm-2" type="date" placeholder="Month" aria-label="Pasword" id="pass" name="pass"></label></p>
+                            </div>
+                            <div class="col-sm-4 mt-3 mb-2">
+                            	<p><br /><input class="form-control mr-sm-2" type="date" placeholder="Day" aria-label="Day" id="pass" name="pass"></label></p>
+                            </div>
+                            <div class="col-sm-4 mt-3">
+                            	<p><br /><input class="form-control mr-sm-2" type="date" placeholder="Year" aria-label="Year" id="pass" name="pass"></label></p>
+                            </div>
+                        </div>
+                        <div>
+                        	<p>Genre:</p>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="form-check">
+                              <label class="form-check-label mr-4 ml-3">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Female" checked>
+                                Female
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Male">
+                                Male
+                              </label>
+                            </div>
+                        </div>
+                      	<input class="btn btn-dark" type="submit" value="Sign Up">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- Rotulo de cabecera -->
-<IMG SRC="{{url_for('static' , filename='img/lindavis.gif')}}">
-<H1>Inmobiliaria Lindavista</H1>
-
-<HR>
-
-<!-- Formulario de búsqueda de vivienda -->
-<H2>Busqueda de vivienda</H2>
-<P>Ayudenos a encontrar la vivienda que mejor se ajusta a sus necesidades. Por
-favor, rellene cuidadosamente el siguiente formulario.</P>
-
-<FORM ACTION="http://www.lsi.us.es/cursos/cursophp/dihm/busca_vivienda.php" METHOD="post" NAME="buscador"
- ONSUBMIT="return(compruebaFormulario())">
-
-<!-- Datos personales -->
-<FIELDSET>
-<LEGEND>Datos personales</LEGEND>
-<P><LABEL CLASS="importante">Nombre</LABEL>
-<INPUT TYPE="text" NAME="nombre" SIZE="35" MAXLENGTH="35">
-</P>
-
-<P><LABEL>Edad</LABEL>
-<INPUT TYPE="radio" NAME="edad" VALUE="1">menos de 20
-<INPUT TYPE="radio" NAME="edad" VALUE="21">de 21 a 30
-<INPUT TYPE="radio" NAME="edad" VALUE="31">de 31 a 40
-<INPUT TYPE="radio" NAME="edad" VALUE="41">mas de 40
-</P>
-
-<P><LABEL>Profesión</LABEL>
-<SELECT NAME="profesion">
-   <OPTION VALUE="seleccione" SELECTED></OPTION>
-   <OPTION VALUE="Funcionario">Funcionario</OPTION>
-   <OPTION VALUE="Profesión liberal">Profesión liberal</OPTION>
-   <OPTION VALUE="Empresario">Empresario</OPTION>
-   <OPTION VALUE="Artista">Artista</OPTION>
-   <OPTION VALUE="Deportista">Deportista</OPTION>
-</SELECT>
-</P>
-
-</FIELDSET>
-
-<!-- Datos de la vivienda buscada -->
-<FIELDSET>
-<LEGEND>Datos de la vivienda buscada</LEGEND>
-
-<P><LABEL>Dormitorios</LABEL>
-<INPUT TYPE="radio" NAME="ndormitorios" VALUE="1">1
-<INPUT TYPE="radio" NAME="ndormitorios" VALUE="2">2
-<INPUT TYPE="radio" NAME="ndormitorios" VALUE="3">3
-<INPUT TYPE="radio" NAME="ndormitorios" VALUE="4">4
-<INPUT TYPE="radio" NAME="ndormitorios" VALUE="5">5
-</P>
-
-<P><LABEL CLASS="importante">Tipo</LABEL>
-<SELECT NAME="tipo">
-   <OPTION VALUE="seleccione" SELECTED>Seleccione un tipo:</OPTION>
-   <OPTION VALUE="Piso">Piso</OPTION>
-   <OPTION VALUE="Adosado">Adosado</OPTION>
-   <OPTION VALUE="Chalet">Chalet</OPTION>
-   <OPTION VALUE="Casa">Casa</OPTION>
-</SELECT>
-</P>
-
-<P><LABEL CLASS="importante">Precio ()</LABEL>
-<INPUT TYPE="radio" NAME="precio" VALUE="000100">&lt; 100.000
-<INPUT TYPE="radio" NAME="precio" VALUE="100200">100.000-200.000
-<INPUT TYPE="radio" NAME="precio" VALUE="200300">200.000-300.000
-<INPUT TYPE="radio" NAME="precio" VALUE="300900">&gt; 300.000
-</P>
-
-<P><LABEL>Zona</LABEL>
-<SELECT MULTIPLE NAME="zona">
-   <OPTION VALUE="seleccione" SELECTED>Seleccione una o mas zonas:</OPTION>
-   <OPTION VALUE="Centro">Centro</OPTION>
-   <OPTION VALUE="Nervion">Nervión</OPTION>
-   <OPTION VALUE="Triana">Triana</OPTION>
-   <OPTION VALUE="Aljarafe">Aljarafe</OPTION>
-   <OPTION VALUE="Macarena">Macarena</OPTION>
-</SELECT>
-</P>
-
-<P><LABEL>Extras</LABEL>
-<INPUT TYPE="checkbox" NAME="extras[]" VALUE="Piscina">Piscina
-<INPUT TYPE="checkbox" NAME="extras[]" VALUE="Jardín">Jardín
-<INPUT TYPE="checkbox" NAME="extras[]" VALUE="Garaje">Garaje
-<INPUT TYPE="checkbox" NAME="extras[]" VALUE="Sauna">Sauna
-</P>
-
-</FIELDSET>
-
-<!-- Inclusión en base de datos -->
-<P><INPUT TYPE="checkbox" CHECKED NAME="incluir">Deseo recibir información acerca
-de futuras promociones de Inmobiliaria Lindavista.</P>
-
-<INPUT TYPE="submit" NAME="enviar" VALUE="Enviar formulario">
-<INPUT TYPE="reset" NAME="borrar" VALUE="Borrar formulario">
-
-</FORM>
-<!-- Fin del formulario de búsqueda de vivienda -->
-
-<HR>
-
-<!-- Direccion -->
-<ADDRESS>
-Inmobiliaria Lindavista<BR>
-Construimos un mundo mejor para usted
-</ADDRESS>
-
-</BODY>
-</HTML>
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
