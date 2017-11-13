@@ -65,6 +65,7 @@ def check():
 
             if configinicial is 0:
                 response = make_response(render_template("/PrimerosPasos/index.html", nombreusuario=nombre))
+                response.set_cookie('email', email)
                 return response
             else:
                 #response = make_response(render_template("index.html"))
@@ -79,25 +80,26 @@ def check():
 
 
 @app.route("/reto", methods=['POST'])
-def reto(email):
+def reto():
 
     #render_template("/PrimerosPasos/index.html", nombreusuario=nombre)
 
+    email = request.cookies.get('email','Undefined')
+    print(email)
     ingreso = int(request.form["ingreso"])
     gasto = int(request.form["gasto"])
     ahorro = int(request.form["ahorro"])
 
-    print(type(ahorro))
-
-
+    print(1)
     cursor = con.cursor()
-
-    cursor.execute( "INSERT INTO ingresos (ingreso , email, tipo, principal) VALUES (%s,%s,%s,1)", (ingreso, email, 'nomina'))
+    print(2)
+    cursor.execute("INSERT INTO ingresos (ingreso , email, tipo, principal) VALUES (%s,%s,%s,1)", (ingreso, email, 'nomina'))
     cursor.execute("INSERT INTO gastos (gasto , categoria, email, principal, reto, tipogasto) VALUES (%s,%s,%s,1,%s,%s)",(gasto, 'vivienda', email, ahorro, 'fijo'))
-
+    print(3)
     con.commit()
-    response = make_response(principal())
-
+    print(4)
+    response = make_response(render_template("/PrimerosPasos/index.html"))
+    print(5)
     return response
 
 
