@@ -65,7 +65,9 @@ def check():
             if configinicial is 0:
                 return render_template("/PrimerosPasos/index.html", nombreusuario=nombre)
             else:
-                response = make_response(render_template("index.html"))
+                #response = make_response(render_template("index.html"))
+                #response.set_cookie('nombre', nombre)
+                response = make_response(principal())
                 response.set_cookie('nombre', nombre)
                 return response
 
@@ -74,9 +76,14 @@ def check():
 
 @app.route("/main", methods=['POST'])
 def principal():
-    cursor = con.cursor()
-    #cursor.execute("SELECT ingreso FROM users WHERE")
-    misgastos = gastos.calculagastos()
+    email = str(request.form["email"])
+    cursor4 = con.cursor()
+    cursor4.execute("SELECT email FROM users WHERE email ='" + email + "'")
+    registro3 = cursor4.fetchone()
+    nombre = registro3[0].capitalize()
+    response = make_response(showSignUp())
+    print nombre
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
