@@ -26,12 +26,6 @@ $(document).ready(function() {
 	});
 	
 });
-
-function paso2(){
-	if(valor != 0){
-		$("#paso1").css("display","none");
-		$("#paso2").css("display","block");
-	}else{
-		alert("Peinate");
-	}
+function ponerValor(){
+	alert(valor);	
 }
