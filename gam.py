@@ -1,9 +1,8 @@
 from flask import Flask, url_for
 from flask import render_template
 from flask import request
-from flask import json
+from flask import make_response
 from flaskext.mysql import MySQL
-from werkzeug.security import generate_password_hash, check_password_hash
 import MySQLdb
 from werkzeug.utils import redirect
 
@@ -42,20 +41,26 @@ def signup():
 
 @app.route("/checkuser", methods=['POST'])
 def check():
-
     password = str(request.form["password"])
     email = str(request.form["email"])
     cursor = con.cursor()
-
     cursor.execute("SELECT email  FROM users WHERE email ='" + email + "' AND password = '"+password+"'")
-
     email = cursor.fetchone()
 
     if len(email) is 1:
-        return redirect(url_for("showSignUp"))
-    else:
-        return "failed"
+        cursor2 = con.cursor()
+        cursor2.execute("SELECT name FROM users WHERE email ='" + email + "'")
+        registro = cursor2.fetchone()
 
+        nombre = registro[0]
+
+        response = make_response(render_template("index.html"))
+
+        response.set_cookie('nombre',nombre)
+
+        return response
+    else:
+        return 'fallo'
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
