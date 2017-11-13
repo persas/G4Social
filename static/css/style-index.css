@@ -22,7 +22,7 @@ nav{
 }
 /* CONTENIDO */
 #content #colum-left{
-	min-height:85vh;
+	min-height:80vh;
 }
 #content #colum-left h2{
 	font:'Helvetica';
@@ -37,11 +37,16 @@ nav{
 	color:#00c6d7;
 }
 #content #colum-right{
-	min-height:85vh;
+	min-height:80vh;
 }
 #content #colum-right h2{
 	color:#00c6d7;
 	font-size:36px;
+}
+@media only screen and (max-width: 576px) {
+	#content #registro #nombre{
+		margin-bottom:15px;
+	}
 }
 #content #registro{
 	color:#00c6d7;	
