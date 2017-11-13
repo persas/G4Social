@@ -5,6 +5,7 @@ from flask import make_response
 from flaskext.mysql import MySQL
 import MySQLdb
 from werkzeug.utils import redirect
+import gastos
 
 app = Flask(__name__, template_folder='templates')
 con = MySQLdb.connect(host="localhost", user="root", passwd="", db="gamejam")
@@ -60,6 +61,12 @@ def check():
             return response
         else:
             return render_template("indexerror.html")
+
+@app.route("/main", methods=['POST'])
+def principal():
+    cursor = con.cursor()
+    #cursor.execute("SELECT ingreso FROM users WHERE")
+    misgastos = gastos.calculagastos()
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
