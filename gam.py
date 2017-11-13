@@ -46,21 +46,20 @@ def check():
     cursor = con.cursor()
     cursor.execute("SELECT email  FROM users WHERE email ='" + email + "' AND password = '"+password+"'")
     email = cursor.fetchone()
-
-    if len(email) is 1:
-        cursor2 = con.cursor()
-        cursor2.execute("SELECT name FROM users WHERE email ='" + email + "'")
-        registro = cursor2.fetchone()
-
-        nombre = registro[0]
-
-        response = make_response(render_template("index.html"))
-
-        response.set_cookie('nombre',nombre)
-
-        return response
+    if email is None:
+            return render_template("indexerror.html")
     else:
-        return 'fallo'
+        if len(email) is 1:
+            email = str(request.form["email"])
+            cursor2 = con.cursor()
+            cursor2.execute("SELECT name FROM users WHERE email ='" + email + "'")
+            registro = cursor2.fetchone()
+            nombre = registro[0].capitalize()
+            response = make_response(render_template("/PrimerosPasos/index.html", nombreusuario=nombre))
+            response.set_cookie('nombre', nombre)
+            return response
+        else:
+            return render_template("indexerror.html")
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
