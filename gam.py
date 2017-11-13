@@ -35,7 +35,7 @@ def signup():
     genero = str(request.form["genre"])
     cursor = con.cursor()
 
-    cursor.execute("INSERT INTO users (name, password , email, apellido, fechanacimiento ,genero) VALUES (%s,%s,%s,%s,%s,%s)",(nombre,password,email,apellido,fechanacimiento,genero))
+    cursor.execute("INSERT INTO users (name, password , email, apellido, fechanacimiento ,genero,configuracioninicial) VALUES (%s,%s,%s,%s,%s,%s,0)",(nombre,password,email,apellido,fechanacimiento,genero))
     con.commit()
 
     return redirect(url_for("showSignUp"))
@@ -56,9 +56,19 @@ def check():
             cursor2.execute("SELECT name FROM users WHERE email ='" + email + "'")
             registro = cursor2.fetchone()
             nombre = registro[0].capitalize()
-            response = make_response(render_template("/PrimerosPasos/index.html", nombreusuario=nombre))
-            response.set_cookie('nombre', nombre)
-            return response
+
+            cursor3 = con.cursor()
+            cursor3.execute("SELECT configuracioninicial FROM users WHERE email ='" + email + "'")
+            registro2 = cursor3.fetchone()
+            configinicial = registro2[0]
+
+            if configinicial is 0:
+                return render_template("/PrimerosPasos/index.html", nombreusuario=nombre)
+            else:
+                response = make_response(render_template("index.html"))
+                response.set_cookie('nombre', nombre)
+                return response
+
         else:
             return render_template("indexerror.html")
 
