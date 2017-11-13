@@ -47,7 +47,7 @@ def check():
     email = str(request.form["email"])
     cursor = con.cursor()
 
-    cursor.execute("SELECT email , password FROM users WHERE email ='" + email + "'")
+    cursor.execute("SELECT email  FROM users WHERE email ='" + email + "' AND password = '"+password+"'")
 
     email = cursor.fetchone()
 
