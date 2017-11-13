@@ -82,37 +82,59 @@ def check():
 @app.route("/reto", methods=['POST'])
 def reto():
 
-    #render_template("/PrimerosPasos/index.html", nombreusuario=nombre)
+    email = request.cookies.get('email', 'Undefined')
 
-    email = request.cookies.get('email','Undefined')
-    print(email)
     ingreso = int(request.form["ingreso"])
     gasto = int(request.form["gasto"])
     ahorro = int(request.form["ahorro"])
 
-    print(1)
+
     cursor = con.cursor()
-    print(2)
+
     cursor.execute("INSERT INTO ingresos (ingreso , email, tipo, principal) VALUES (%s,%s,%s,1)", (ingreso, email, 'nomina'))
-    cursor.execute("INSERT INTO gastos (gasto , categoria, email, principal, reto, tipogasto) VALUES (%s,%s,%s,1,%s,%s)",(gasto, 'vivienda', email, ahorro, 'fijo'))
-    print(3)
+    cursor.execute("INSERT INTO gastos (gasto , categoria, email, principal, reto, tipogasto) VALUES (%s,%s,%s,1,0,%s)", (gasto, 'vivienda', email, 'fijo'))
+    cursor.execute("INSERT INTO gastos (gasto , categoria, email, principal, reto, tipogasto) VALUES (%s,%s,%s,0,1,%s)", (ahorro, 'ahorro', email, 'ahorro'))
+
     con.commit()
-    print(4)
+
+    #response = make_response(render_template("/PrimerosPasos/index.html"))
+    response = make_response(calc_gastos())
+    return response
+
+
+@app.route("/gastos", methods=['POST'])
+def calc_gastos():
+
+    email = request.cookies.get('email', 'Undefined')
+    cursor = con.cursor()
+    print(email)
+    gasto = cursor.execute("SELECT gasto FROM gastos WHERE gastos.email = '" + email + "' AND gastos.principal = 1")
+    print (type(gasto))
+    reto = cursor.execute("SELECT reto FROM gastos WHERE gastos.email = '" + email + "' AND gastos.reto = 1")
+    print(type(reto))
+    ingreso = cursor.execute("SELECT ingreso FROM ingresos WHERE ingresos.email = '" + email + "' AND ingresos.principal = 1")
+    print(type(ingreso))
+    misgastos = gastos.calcula_gastos(ingreso,gasto,reto)
+    print(misgastos)
     response = make_response(render_template("/PrimerosPasos/index.html"))
-    print(5)
+
     return response
 
 
 @app.route("/main", methods=['POST'])
 def principal():
 
-    email = str(request.form["email"])
-    cursor4 = con.cursor()
-    cursor4.execute("SELECT email FROM users WHERE email ='" + email + "'")
-    registro3 = cursor4.fetchone()
-    nombre = registro3[0].capitalize()
+    email = request.cookies.get('email', 'Undefined')
+    cursor = con.cursor()
+
+    gasto = cursor.execute("SELECT gasto FROM gastos WHERE gastos.email = '" + email + "' AND gastos.principal = " + 1)
+    reto = cursor.execute("SELECT reto FROM gastos WHERE gastos.email = '" + email + "'")
+
+    ingreso = cursor.execute("SELECT ingreso FROM ingresos WHERE ingresos.email = '" + email + "' AND ingresos.principal = " + 1)
+
+    misgastos = gastos.calcula_gastos(ingreso,gasto,reto)
     response = make_response(showSignUp())
-    print nombre
+
     return response
 
 
