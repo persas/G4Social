@@ -66,7 +66,11 @@ def check():
 def principal():
     cursor = con.cursor()
     #cursor.execute("SELECT ingreso FROM users WHERE")
-    misgastos = gastos.calculagastos()
+
+    #BORRAR EST0
+    ingreso, gasto, reto = 1200, 500, 350
+    misgastos = gastos.calcula_gastos(ingreso, gasto, reto)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
