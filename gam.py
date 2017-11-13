@@ -35,10 +35,27 @@ def signup():
     genero = str(request.form["genre"])
     cursor = con.cursor()
 
-    cursor.execute("INSERT INTO users (name, password , email, apellido, ,genero) VALUES (%s,%s,%s,%s,%s,%s)",(nombre,password,email,apellido,fechanacimiento,genero))
+    cursor.execute("INSERT INTO users (name, password , email, apellido, fechanacimiento ,genero) VALUES (%s,%s,%s,%s,%s,%s)",(nombre,password,email,apellido,fechanacimiento,genero))
     con.commit()
 
     return redirect(url_for("showSignUp"))
+
+@app.route("/checkuser", methods=['POST'])
+def check():
+
+    password = str(request.form["password"])
+    email = str(request.form["email"])
+    cursor = con.cursor()
+
+    cursor.execute("SELECT email , password FROM users WHERE email ='" + email + "'")
+
+    email = cursor.fetchone()
+
+    if len(email) is 1:
+        return redirect(url_for("showSignUp"))
+    else:
+        return "failed"
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
