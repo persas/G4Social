@@ -76,6 +76,7 @@ def check():
 
 @app.route("/main", methods=['POST'])
 def principal():
+<<<<<<< HEAD
     email = str(request.form["email"])
     cursor4 = con.cursor()
     cursor4.execute("SELECT email FROM users WHERE email ='" + email + "'")
@@ -84,6 +85,15 @@ def principal():
     response = make_response(showSignUp())
     print nombre
     return response
+=======
+    cursor = con.cursor()
+    #cursor.execute("SELECT ingreso FROM users WHERE")
+
+    #BORRAR EST0
+    ingreso, gasto, reto = 1200, 500, 350
+    misgastos = gastos.calcula_gastos(ingreso, gasto, reto)
+
+>>>>>>> 3e51668fe2937f37b678db1de2b87a37c0b530d5
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
