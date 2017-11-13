@@ -58,7 +58,8 @@ def check():
             response = make_response(render_template("/PrimerosPasos/index.html", nombreusuario=nombre))
             response.set_cookie('nombre', nombre)
             return response
-        else:            return render_template("indexerror.html")
+        else:
+            return render_template("indexerror.html")
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
