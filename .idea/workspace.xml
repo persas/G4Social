@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b137287-2ffd-4dc5-aa25-d1db5b7d9757" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gam.py" afterPath="$PROJECT_DIR$/gam.py" />
+=======
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/G4Social.iml" afterPath="$PROJECT_DIR$/.idea/G4Social.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gam.py" afterPath="$PROJECT_DIR$/gam.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/PrimerosPasos/index.html" afterPath="$PROJECT_DIR$/templates/PrimerosPasos/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
+>>>>>>> 35933c2a88dc20f14f72235d809e3d10077427fc
+>>>>>>> db26bdc42feeb19d40aaf0ac49204845f8f14983
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,7 +25,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/G4Social$gam.coverage" NAME="gam Coverage Results" MODIFIED="1510510763742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/G4Social$gam.coverage" NAME="gam Coverage Results" MODIFIED="1510588413806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/G4Social$index.coverage" NAME="index Coverage Results" MODIFIED="1510509489879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -23,10 +36,25 @@
       <file leaf-file-name="gam.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gam.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="1020">
               <caret line="60" column="13" lean-forward="false" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="-46">
+              <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
+                <marker date="1510587670955" expanded="true" signature="1020:1124" ph="INSERT INTO users... " />
+                <marker date="1510587670955" expanded="true" signature="1431:1514" ph="SELECT email... users" />
+                <marker date="1510587670955" expanded="true" signature="1628:1679" ph="SELECT name users" />
+=======
+            <state relative-caret-position="330">
+              <caret line="60" column="13" lean-forward="true" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+>>>>>>> db26bdc42feeb19d40aaf0ac49204845f8f14983
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+>>>>>>> 35933c2a88dc20f14f72235d809e3d10077427fc
               </folding>
             </state>
           </provider>
@@ -558,7 +586,31 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/templates/PrimerosPasos/index.html">
+=======
+    <entry file="file://$PROJECT_DIR$/gam.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="-46">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <marker date="1510587670955" expanded="true" signature="1020:1124" ph="INSERT INTO users... " />
+            <marker date="1510587670955" expanded="true" signature="1431:1514" ph="SELECT email... users" />
+            <marker date="1510587670955" expanded="true" signature="1628:1679" ph="SELECT name users" />
+=======
+        <state relative-caret-position="330">
+          <caret line="60" column="13" lean-forward="true" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+>>>>>>> 35933c2a88dc20f14f72235d809e3d10077427fc
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/indexerror.html">
+>>>>>>> db26bdc42feeb19d40aaf0ac49204845f8f14983
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="74" lean-forward="true" selection-start-line="18" selection-start-column="74" selection-end-line="18" selection-end-column="74" />
