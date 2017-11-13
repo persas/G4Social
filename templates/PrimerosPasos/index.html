@@ -13,12 +13,13 @@
     <link rel="stylesheet" href="css/style-Primeros-Pasos.css" />
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script>
+		var valor = 0;
     	$(document).ready(function() {
 			$("#marcador").html("<h2>Tu primer reto: 0 €</h2>");
 			function moveSlider(e){
 				var pos = $(e.currentTarget).offset();
 				var posX = e.pageX - pos.left;
-				var valor = Math.round(posX/2);
+				valor = Math.round(posX/2);
 				
 				if(posX >= 0 && posX <= $(e.currentTarget).outerWidth()){
 					$("#slider #progress").css("width", posX+"px");
@@ -37,7 +38,18 @@
 			}).on("mouseup",function(){
 				$(this).off("mousemove");
 			});
+			
 		});
+		
+		function paso2(){
+			if(valor != 0){
+				$("#paso1").css("display","none");
+				$("#paso2").css("display","block");
+			}else{
+				alert("Peinate");
+			}
+		}
+		
     </script>
 </head>
 
@@ -51,15 +63,11 @@
       <div class="collapse navbar-collapse justify-content-end mr-5" id="navbarSupportedContent">
         <!-- <button type="button" class="btn btn-dark">Bienvenido Jose Carlos<img src="../img/flecha-abajo.png" class="ml-3" /></button> -->
         <nav class="navbar navbar-expand-lg ">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
         
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item dropdown" style="border:1px solid #000; border-radius:10px;">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <b> <?php echo($_COOKIE['nombre']);?></b>
+                  <b> Jose Carlos </b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Mi cuenta</a>
@@ -69,13 +77,12 @@
                 </div>
               </li>
             </ul>
-          </div>
         </nav><!-- Cierre del Nav -->
       </div>
     </nav>
     <div id="content" class="container">
-    	<form id="primerospasos" method="post" action="">
-        	<div id="paso1" class="container pt-3" style="border:1px solid #000;">
+    	<form id="primerospasos" method="post" action="/retos">
+        	<div id="paso1" class="container pt-3">
             	<h1 class="mb-5">Te proponemos un juego, marca cual va a<br /> ser tu primer objetivo de ahorro y <br />nosotros
 					nos encargamos del resto.</h1>
                 <div id="marcador"></div>
@@ -83,8 +90,25 @@
                     <div id="progress"></div>
                     <div id="indicator"></div>
                 </div>
-                <div id="progreso" class="container justify-content-end mt-5">
-                	<p>Paso 1 de 2 <button type="button" class="btn btn-outline-dark ml-3">Dark</button></p>
+                <div id="progreso" class="container">
+                	<p>Paso 1 de 2 <button type="button" class="btn btn-outline-dark ml-3" onclick="paso2()">Siguiente paso</button></p>
+                </div>
+            </div>
+            
+            <div id="paso2" class="container pt-3">
+            	<h1 class="mb-5">Ultimo paso, indicanos los ingresos que recibes <br />de manera fija cada mes.</h1>
+                	
+                <div class="row">
+                	<div class="col-sm-3 d-none d-md-block"></div>
+                    <div class="col-sm-6">
+                    <input class="form-control mr-sm-6 mb-4 ml-5 mr-5" type="text" placeholder="Cantidad del ingreso, Ejemplo: 500" aria-label="Ingreso" id="ingreso" name="ingreso">
+                    <input class="form-control mr-sm-6 ml-5 mr-5" type="text" placeholder="Concepto, Ejemplo: Salario" aria-label="Concepto de Ingreso" id="concepto" name="conceto">
+                    </div>
+                	<div class="col-sm-3"></div>
+                </div>
+                
+                <div id="progreso" class="container">
+                	<p>Paso 2 de 2 <button type="submit" class="btn btn-outline-dark ml-3" onclick="paso2()">Finalizar</button></p>
                 </div>
             </div>
             
