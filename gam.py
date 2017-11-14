@@ -6,6 +6,7 @@ from flaskext.mysql import MySQL
 import MySQLdb
 from werkzeug.utils import redirect
 import gastos
+import unicodedata
 
 app = Flask(__name__, template_folder='templates')
 con = MySQLdb.connect(host="localhost", user="root", passwd="", db="gamejam")
@@ -91,9 +92,9 @@ def reto():
 
     cursor = con.cursor()
 
-    cursor.execute("INSERT INTO ingresos (ingreso , email, tipo, principal) VALUES (%s,%s,%s,1)", (ingreso, email, 'nomina'))
-    cursor.execute("INSERT INTO gastos (gasto , categoria, email, principal, reto, tipogasto) VALUES (%s,%s,%s,1,0,%s)", (gasto, 'vivienda', email, 'fijo'))
-    cursor.execute("INSERT INTO gastos (gasto , categoria, email, principal, reto, tipogasto) VALUES (%s,%s,%s,0,1,%s)", (ahorro, 'ahorro', email, 'ahorro'))
+    cursor.execute("INSERT INTO ingresos (ingreso , tipo, principal, ingresos.email) VALUES (%s,%s,1,%s)", (ingreso, 'nomina',email))
+    cursor.execute("INSERT INTO gastos (gasto , categoria, principal, reto, tipogasto, gastos.email) VALUES (%s,%s,1,0,%s,%s)", (gasto, 'vivienda', 'fijo', email))
+    cursor.execute("INSERT INTO gastos (gasto , categoria, principal, reto, tipogasto, gastos.email) VALUES (%s,%s,0,1,%s,%s)", (ahorro, 'ahorro', 'ahorro',email))
 
     con.commit()
 
@@ -105,17 +106,26 @@ def reto():
 @app.route("/gastos", methods=['POST'])
 def calc_gastos():
 
-    email = request.cookies.get('email', 'Undefined')
+    email = request.cookies.get('email')
+
+    email2 = str(email)
+
+
     cursor = con.cursor()
-    print(email)
-    gasto = cursor.execute("SELECT gasto FROM gastos WHERE gastos.email = '" + email + "' AND gastos.principal = 1")
-    print (type(gasto))
-    reto = cursor.execute("SELECT reto FROM gastos WHERE gastos.email = '" + email + "' AND gastos.reto = 1")
-    print(type(reto))
-    ingreso = cursor.execute("SELECT ingreso FROM ingresos WHERE ingresos.email = '" + email + "' AND ingresos.principal = 1")
-    print(type(ingreso))
-    misgastos = gastos.calcula_gastos(ingreso,gasto,reto)
-    print(misgastos)
+    print (email2)
+    print(type(email2))
+    cursor.execute("SELECT gastos.gasto FROM gastos WHERE gastos.email = '" + email2 + "' AND gastos.principal = 1")
+    gasto = cursor.fetchone()
+    gasto = gasto[0]
+
+    cursor.execute("SELECT reto FROM gastos WHERE gastos.email = '" + email2 + "' AND gastos.reto = 1")
+    reto = cursor.fetchone()
+    reto = reto[0]
+
+    cursor.execute("SELECT ingreso FROM ingresos WHERE ingresos.email = '" + email2 + "' AND ingresos.principal = 1")
+    ingreso = cursor.fetchone()
+    ingreso = ingreso[0]
+
     response = make_response(render_template("/PrimerosPasos/index.html"))
 
     return response
