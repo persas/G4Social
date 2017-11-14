@@ -125,15 +125,18 @@ def calc_gastos():
     cursor.execute("SELECT ingreso FROM ingresos WHERE ingresos.email = '" + email2 + "' AND ingresos.principal = 1")
     ingreso = cursor.fetchone()
     ingreso = ingreso[0]
+    misgastos = gastos.calcula_gastos(ingreso, gasto, reto)
 
-    response = make_response(render_template("/PrimerosPasos/index.html"))
+    print(misgastos)
+    
+    response = make_response(render_template("main/index.html", vivienda=misgastos[0], comida=misgastos[1],casa=misgastos[2], ocio=misgastos[3], otros=misgastos[4]))
 
     return response
 
 
 @app.route("/main", methods=['POST'])
 def principal():
-
+    '''
     email = request.cookies.get('email', 'Undefined')
     cursor = con.cursor()
 
@@ -143,11 +146,15 @@ def principal():
     ingreso = cursor.execute("SELECT ingreso FROM ingresos WHERE ingresos.email = '" + email + "' AND ingresos.principal = " + 1)
 
     misgastos = gastos.calcula_gastos(ingreso,gasto,reto)
+    print
+    '''
     response = make_response(showSignUp())
 
     return response
 
-
+@app.route("/principal", methods=['POST'])
+def inicio():
+    return render_template("main/index.html")
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

@@ -8,25 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <!--<link rel="stylesheet" href="{{url_for('static' , filename='../css/bootstrap.css')}}">-->
-    <!--<link rel="stylesheet" href="{{url_for('static' , filename='../css/style-index.css')}}">-->
-    <!--<link rel="stylesheet" href="{{url_for('static' , filename='css/style-main.css')}}" />-->
-    
-    <link rel="stylesheet" href="../css/bootstrap.css" />
-    <link rel="stylesheet" href="../css/style-index.css" />
-    <link rel="stylesheet" href="css/style-main.css" />
-    <link rel="stylesheet" href="css/style-new-gasto.css" />
+    <link rel="stylesheet" href="{{url_for('static' , filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename='css/style-index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename='css/style-main.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static' , filename='css/style-new-gasto.css')}}" />
+
+    <!--<link rel="stylesheet" href="../css/bootstrap.css" />-->
+    <!--<link rel="stylesheet" href="../css/style-index.css" />-->
+    <!--<link rel="stylesheet" href="css/style-main.css" />-->
+    <!--<link rel="stylesheet" href="css/style-new-gasto.css" />-->
    
     
     
-    <!--<script src="{{url_for('static' , filename='../js/jquery-3.2.1.min.js')}}"></script>-->
+    <script src="{{url_for('static' , filename='../js/jquery-3.2.1.min.js')}}"></script>
     
-    <script src="../js/jquery-3.2.1.min.js"></script>
+   <!-- <script src="../js/jquery-3.2.1.min.js"></script>-->
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <!--<a class="navbar-brand ml-5" href="#"><img src="{{url_for('static' ,filename='img/logo-banner-index.png' )}}" /></a>-->
-      <a class="navbar-brand ml-5" href="#"><img src="../img/logo-banner-index.png" /></a>
+      <a class="navbar-brand ml-5" href="#"><img src="{{url_for('static' ,filename='img/logo-banner-index.png' )}}" /></a>
+      <!--<a class="navbar-brand ml-5" href="#"><img src="../img/logo-banner-index.png" /></a>-->
       <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>-->
@@ -38,7 +39,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item dropdown" style="border:1px solid #000; border-radius:10px;">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <b><!-- JOSEEEE TRABAJA  --></b>
+                  <b>{{ name }}</b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Mi cuenta</a>
@@ -92,7 +93,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <!--<script src="{{url_for('static' , filename='js/bootstrap.js' )}}"></script>-->
-    <script src="../js/bootstrap.js"></script>
+    <script src="{{url_for('static' , filename='js/bootstrap.js' )}}"></script>
+    <!--<script src="../js/bootstrap.js"></script>-->
 </body>
 </html>
