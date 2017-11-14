@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{url_for('static' , filename='css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{url_for('static' , filename='css/style-index.css')}}">
-    <link rel="stylesheet" href="{{url_for('static' , filename='css/style-main.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static' , filename='main/css/style-main.css')}}" />
     
     <!--<link rel="stylesheet" href="../css/bootstrap.css" />-->
     <!--<link rel="stylesheet" href="../css/style-index.css" />-->
@@ -72,11 +72,11 @@
             </div>
             <div class="col-sm-8">
             	<div class="progress mt-2" style="height:25px;">
-                   <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 15%; height:25px;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                   <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{porcientoAhorro}}%; height:25px;" aria-valuenow="{{porcientoAhorro}}" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             <div class="col-sm-2">
-            	<h3 class="pt-1">400€</h3>
+            	<h3 class="pt-1"> {{ ahorro }}€</h3>
             </div>
         </div>
         <div id="pestañas" class="row mt-4" style="width:100%; margin:0 auto">
@@ -91,11 +91,11 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="progress mt-2" style="height:25px;">
-                       <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 40%; height:25px;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                       <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{porcientoVivienda}}%; height:25px;" aria-valuenow="{{porcientoVivienda}}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <h3 class="pt-1">350€</h3>
+                    <h3 class="pt-1">{{vivienda}}€</h3>
                 </div>
             </div>
             <div id="ahorro" class="row mt-4">
@@ -104,11 +104,11 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="progress mt-2" style="height:25px;">
-                       <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 5%; height:25px;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                       <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{porcientoComida}}%; height:25px;" aria-valuenow="{{porcientoComida}}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <h3 class="pt-1">60€</h3>
+                    <h3 class="pt-1">{{comida}}€</h3>
                 </div>
             </div>
             <div id="ahorro" class="row mt-4">
@@ -117,11 +117,11 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="progress mt-2" style="height:25px;">
-                       <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 8%; height:25px;" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
+                       <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{porcientoOcio}}%; height:25px;" aria-valuenow="{{porcientoOcio}}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <h3 class="pt-1">75€</h3>
+                    <h3 class="pt-1">{{ocio}}€</h3>
                 </div>
             </div>
             <div id="ahorro" class="row mt-4">
@@ -130,11 +130,11 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="progress mt-2" style="height:25px;">
-                       <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 12%; height:25px;" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                       <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{porcientoOtro}}%; height:25px;" aria-valuenow="{{porcientoOtro}}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <h3 class="pt-1">100€</h3>
+                    <h3 class="pt-1">{{otros}}€</h3>
                 </div>
             </div>
             <div class="row mt-4 justify-content-end" style="width:100%;" >
@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <h3 class="pt-1">700€</h3>
+                    <h3 class="pt-1">{{vivienda}}€</h3>
                 </div>
             </div>
             <div id="ahorro" class="row mt-4">
