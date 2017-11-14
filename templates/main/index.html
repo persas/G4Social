@@ -34,6 +34,9 @@
 			$("#btn-gastos").attr("class","btn btn-outline-info");
 			$("#btn-ingresos").attr("class","btn btn-info ml-2");	
 		}
+		function aniadirgasto(){
+		    location.href ="{{url_for('static' , filename='img/logo-banner-index.png')}}";
+		}
 	</script>
 </head>
 <body>
@@ -51,7 +54,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item dropdown" style="border:1px solid #000; border-radius:10px;">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <b><!-- JOSEEEE TRABAJA  --></b>
+                  <b>{{ nombreus }}</b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Mi cuenta</a>
@@ -72,7 +75,7 @@
             </div>
             <div class="col-sm-8">
             	<div class="progress mt-2" style="height:25px;">
-                   <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{porcientoAhorro}}%; height:25px;" aria-valuenow="{{porcientoAhorro}}" aria-valuemin="0" aria-valuemax="100"></div>
+                   <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{ porcientoAhorro }}%; height:25px;" aria-valuenow="{{ porcientoAhorro}}" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             <div class="col-sm-2">
@@ -84,63 +87,65 @@
             <button type="button" class="btn btn-outline-info ml-2" id="btn-ingresos" onclick="mostrarIngresos()">Ingresos</button>  
         </div>
         <!-- GASTOS -->
-        <div id="gastos">
-            <div id="ahorro" class="row mt-4">
-                <div class="col-sm-2 ">
-                    <h3>Vivienda:</h3>
-                </div>
-                <div class="col-sm-8">
-                    <div class="progress mt-2" style="height:25px;">
-                       <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{porcientoVivienda}}%; height:25px;" aria-valuenow="{{porcientoVivienda}}" aria-valuemin="0" aria-valuemax="100"></div>
+        <form method="post" action="/redireccionGasto">
+            <div id="gastos">
+                <div id="ahorro" class="row mt-4">
+                    <div class="col-sm-2 ">
+                        <h3>Vivienda:</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="progress mt-2" style="height:25px;">
+                           <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{porcientoVivienda}}%; height:25px;" aria-valuenow="{{porcientoVivienda}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <h3 class="pt-1">{{ vivienda }}€</h3>
                     </div>
                 </div>
-                <div class="col-sm-2">
-                    <h3 class="pt-1">{{vivienda}}€</h3>
-                </div>
-            </div>
-            <div id="ahorro" class="row mt-4">
-                <div class="col-sm-2 ">
-                    <h3>Comida:</h3>
-                </div>
-                <div class="col-sm-8">
-                    <div class="progress mt-2" style="height:25px;">
-                       <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{porcientoComida}}%; height:25px;" aria-valuenow="{{porcientoComida}}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div id="ahorro" class="row mt-4">
+                    <div class="col-sm-2 ">
+                        <h3>Comida:</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="progress mt-2" style="height:25px;">
+                           <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{porcientoComida}}%; height:25px;" aria-valuenow="{{porcientoComida}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <h3 class="pt-1">{{comida}}€</h3>
                     </div>
                 </div>
-                <div class="col-sm-2">
-                    <h3 class="pt-1">{{comida}}€</h3>
-                </div>
-            </div>
-            <div id="ahorro" class="row mt-4">
-                <div class="col-sm-2 ">
-                    <h3>Ocio:</h3>
-                </div>
-                <div class="col-sm-8">
-                    <div class="progress mt-2" style="height:25px;">
-                       <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{porcientoOcio}}%; height:25px;" aria-valuenow="{{porcientoOcio}}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div id="ahorro" class="row mt-4">
+                    <div class="col-sm-2 ">
+                        <h3>Ocio:</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="progress mt-2" style="height:25px;">
+                           <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{porcientoOcio}}%; height:25px;" aria-valuenow="{{porcientoOcio}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <h3 class="pt-1">{{ocio}}€</h3>
                     </div>
                 </div>
-                <div class="col-sm-2">
-                    <h3 class="pt-1">{{ocio}}€</h3>
-                </div>
-            </div>
-            <div id="ahorro" class="row mt-4">
-                <div class="col-sm-2 ">
-                    <h3>Otro:</h3>
-                </div>
-                <div class="col-sm-8">
-                    <div class="progress mt-2" style="height:25px;">
-                       <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{porcientoOtro}}%; height:25px;" aria-valuenow="{{porcientoOtro}}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div id="ahorro" class="row mt-4">
+                    <div class="col-sm-2 ">
+                        <h3>Otro:</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="progress mt-2" style="height:25px;">
+                           <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{porcientoOtro}}%; height:25px;" aria-valuenow="{{ porcientoOtro }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <h3 class="pt-1">{{otros}}€</h3>
                     </div>
                 </div>
-                <div class="col-sm-2">
-                    <h3 class="pt-1">{{otros}}€</h3>
+                <div class="row mt-4 justify-content-end" style="width:100%;" >
+                    <button type="submit" class="btn btn-warning mr-5">+ Añadir nuevo gasto</button>
                 </div>
             </div>
-            <div class="row mt-4 justify-content-end" style="width:100%;" >
-                <button type="button" class="btn btn-warning mr-5">+ Añadir nuevo gasto</button>
-            </div>
-    	</div>
+        </form>
         <!-- INGRESOS -->
         <div id="ingresos">
             <div id="ahorro" class="row mt-4">
@@ -153,10 +158,10 @@
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <h3 class="pt-1">{{vivienda}}€</h3>
+                    <h3 class="pt-1">{{ingresoss}}€</h3>
                 </div>
             </div>
-            <div id="ahorro" class="row mt-4">
+           <!-- <div id="ahorro" class="row mt-4">
                 <div class="col-sm-2 ">
                     <h3>Comida:</h3>
                 </div>
@@ -194,7 +199,7 @@
                 <div class="col-sm-2">
                     <h3 class="pt-1">400€</h3>
                 </div>
-            </div>
+            </div>-->
             <div class="row mt-4 justify-content-end" style="width:100%;" >
                 <button type="button" class="btn btn-warning mr-5">+ Añadir nuevo ingreso</button>
             </div>

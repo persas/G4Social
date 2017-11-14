@@ -10,8 +10,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{url_for('static' , filename='css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{url_for('static' , filename='css/style-index.css')}}">
-    <link rel="stylesheet" href="{{url_for('static' , filename='css/style-main.css')}}" />
-    <link rel="stylesheet" href="{{url_for('static' , filename='css/style-new-gasto.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static' , filename='main/css/style-main.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static' , filename='main/css/style-new-gasto.css')}}" />
 
     <!--<link rel="stylesheet" href="../css/bootstrap.css" />-->
     <!--<link rel="stylesheet" href="../css/style-index.css" />-->
@@ -60,25 +60,25 @@
             </div>
             <div class="col-sm-8">
             	<div class="progress mt-2" style="height:25px;">
-                   <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 15%; height:25px;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                   <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{porcientoAhorro}}%; height:25px;" aria-valuenow="{{porcientoAhorro}}" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             <div class="col-sm-2">
-            	<h3 class="pt-1">400€</h3>
+            	<h3 class="pt-1">{{ahorro}}€</h3>
             </div>
         </div>
 		<div id="gasto">
-            <img src="../img/Logo-gasto.png" class="mt-4" /><br />
+            <img src="{{url_for('static' ,filename='img/Logo-gasto.png' )}}" class="mt-4" /><br />
             <h1 class="mt-3">AÑADIR UN NUEVO GASTO</h1><br />
-            <form id="nuevoGasto" method="post" action="">
+            <form id="nuevoGasto" method="post" action="/meterGasto">
                 <div id="campos">
                     <input class="form-control mr-sm-2" type="text" placeholder="Gasto" id="gasto" name="gasto"><br />
-                    <select class="custom-select">
+                    <select class="custom-select" id="tipoGasto" name="tipoGasto">
                       <option selected id="concepto">Selecciona la categoria del gasto</option>
-                      <option value="1">Vivienda</option>
-                      <option value="2">Comida</option>
-                      <option value="3">Ocio</option>
-                      <option value="4">Otros</option>
+                      <option value="vivienda">Vivienda</option>
+                      <option value="comida">Comida</option>
+                      <option value="ocio">Ocio</option>
+                      <option value="otros">Otros</option>
                     </select>
                 </div>
                 <div id="progreso" style="text-align:center;">
